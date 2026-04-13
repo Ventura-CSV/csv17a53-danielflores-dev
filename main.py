@@ -2,32 +2,31 @@ from __future__ import annotations
 
 
 def find_non_injective_pair(mapping: dict) -> tuple | None:
-    """Return (x1, x2) where f(x1)==f(x2) and x1!=x2, or None if injective."""
-    # === TODO ===
-    # Your code here
-    pass
-    # === END TODO ===
+    seen = {}
+    for k, v in mapping.items():
+        if v in seen:
+            return (seen[v], k)
+        seen[v] = k
+    return None
 
 
 def find_non_surjective_element(mapping: dict, target: set):
-    """Return one target element with no input mapping to it, or None if surjective."""
-    # === TODO ===
-    # Your code here
-    pass
-    # === END TODO ===
+    range_set = set(mapping.values())
+    for elem in target:
+        if elem not in range_set:
+            return elem
+    return None
 
 
 def my_floor(x: float) -> int:
-    """Return floor(x) without using math.floor."""
-    # === TODO ===
-    # Your code here
-    pass
-    # === END TODO ===
+    n = int(x)
+    if x < 0 and x != n:
+        return n - 1
+    return n
 
 
 def my_ceil(x: float) -> int:
-    """Return ceil(x) without using math.ceil."""
-    # === TODO ===
-    # Your code here
-    pass
-    # === END TODO ===
+    n = int(x)
+    if x > 0 and x != n:
+        return n + 1
+    return n
